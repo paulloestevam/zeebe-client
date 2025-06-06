@@ -12,11 +12,11 @@ public class ProcessStarter {
     @Autowired
     private ZeebeClient zeebeClient;
 
-    public void startExampleProcess(String nome) {
+    public void startExampleProcess(String requestId) {
         zeebeClient.newCreateInstanceCommand()
                 .bpmnProcessId("Process_qzqw2uj")
                 .latestVersion()
-                .variables(Map.of("22222", nome))
+                .variables(Map.of("requestId", requestId))
                 .send()
                 .join();
     }
